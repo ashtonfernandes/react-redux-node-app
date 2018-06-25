@@ -7,14 +7,14 @@
     display: flex;
     width: 100%;
     height: 50px;
-    color: #1d3649;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 10;
     justify-content: space-between;
-    background-color: white;
-    border-bottom: 1px solid lightgrey;
+    background-color: #2185d0;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .logo-container {
@@ -45,7 +45,6 @@
     float: right;
     align-items: center;
     margin-right: 10px;
-    color: #1d3649;
     height: 25px;
 }
 
@@ -73,7 +72,7 @@
 .logout-container {
     background-color: white;
     width: 400px;
-    height: 140px;
+    height: 120px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -82,8 +81,9 @@
     border-radius: 8px;
     padding: 20px;
     z-index: 10;
-    border: 1px solid #1d3649;
+    color: black;
     text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .logout-container-title {

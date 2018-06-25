@@ -53,20 +53,20 @@ class Header extends Component {
                         </div>
                     }
                 </div>
-                {this.state.logoutNow ? (
+                {this.state.logoutNow && 
                     <div className="logout-container">
                         <div className="logout-container-title">Are you sure you want to logout?</div>
                         <button className="logout-container-button-1" onClick={this.closeLogout}>No</button>
                         <button className="logout-container-button-2" onClick={this.props.logout}>Yes</button>
                     </div>
-                ) : null }
+                }
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log('states', state);
+    // console.log('states', state);
     return {
         isLoggedIn: isLoggedIn(state),
     }

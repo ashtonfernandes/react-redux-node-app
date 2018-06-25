@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { Card, Button, Form } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
 import Home from '../home/Home';
 import Header from '../header/Header';
 import { login } from '../../actions/loginActions'; 
@@ -64,48 +62,77 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="login-container-wrapper">
-                {/* {this.state.isLogin ? (
-                    <Home action={this.handleSignOut} />
-                ) : ( */}
-                    <div className="container">
-                        {/* <div className="header-container">
-                            <Header />
-                        </div> */}
-                        <Card className="card-element">
-                            <Form onSubmit={this.handleSubmit}>
-                                <Form.Field>
-                                    <label>Username</label>
-                                    <input
-                                        name="username"
-                                        value={this.state.username}
-                                        onChange={this.handleChange}
-                                        placeholder="username"
-                                    />
-                                </Form.Field>
-                                <Form.Field>
-                                    <label>Password</label>
-                                    <input
-                                        name="password"
-                                        value={this.state.password}
-                                        onChange={this.handleChange}
-                                        type="password"
-                                        placeholder="password"
-                                    />
-                                </Form.Field>
-                                <Button className="login-button" primary type="submit">
-                                    Login
-                                </Button>
-                                {this.state.errorPresent ? (
-                                    <div className="login-error-case">
-                                        Incorrect Username or Password entered.<br />
-                                        Please enter the correct credentials.
-                                    </div>
-                                ) : null}
-                            </Form>
-                        </Card>
-                    </div>
-                // )}
+            <div className="">
+                <div className="login-form">
+                    {/* <div className="header-container">
+                        <Header />
+                    </div> */}
+                    {/* <div className="card-element"> */}
+
+
+                        <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <label>Username</label>
+                                <input
+                                    name="username"
+                                    value={this.state.username}
+                                    onChange={this.handleChange}
+                                    placeholder="username"
+                                />
+                            </div>
+                            <div>
+                                <label>Password</label>
+                                <input
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    type="password"
+                                    placeholder="password"
+                                />
+                            </div>
+                            <button className="login-button" primary type="submit">
+                                Login
+                            </button>
+                            {this.state.errorPresent && 
+                                <div className="login-error-case">
+                                    <div>Incorrect Username or Password entered.</div>
+                                    <div>Please enter the correct credentials.</div>
+                                </div>
+                            }
+                        </form>
+
+                        {/* <form onSubmit={this.handleSubmit}>
+                            <div>
+                                <label>Username</label>
+                                <input
+                                    name="username"
+                                    value={this.state.username}
+                                    onChange={this.handleChange}
+                                    placeholder="username"
+                                />
+                            </div>
+                            <div>
+                                <label>Password</label>
+                                <input
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                    type="password"
+                                    placeholder="password"
+                                />
+                            </div>
+                            <button className="login-button" primary type="submit">
+                                Login
+                            </button>
+                            {this.state.errorPresent ? (
+                                <div className="login-error-case">
+                                    <div>Incorrect Username or Password entered.</div>
+                                    <div>Please enter the correct credentials.</div>
+                                </div>
+                            ) : null}
+                        </form> */}
+                    {/* </div> */}
+                </div>
             </div>
         );
     }
