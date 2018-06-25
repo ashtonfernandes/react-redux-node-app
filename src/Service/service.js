@@ -1,31 +1,12 @@
-// I am used to call for all the apis and used through out the application.
-
-// export const login = async (username, password) => {
-//     const response = await fetch('/api/login', {
-//         method: 'post',
-//         headers: {
-//             Accept: 'application/json, text/plain, */*',
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             username,
-//             password
-//         })
-//     });
-
-//     const json = await response.json();
-//     return json;
-// };
-
-export const login = (username, password)  => {
+export const loginUser = (username, password)  => {
     return fetch('/api/login', {
         method: 'post',
         headers: { 
             'Content-Type': 'application/json' 
         },
         body: JSON.stringify(
-            username,
-            password
+            {username,
+            password}
         )
     }).then(response => {
         console.log(response);

@@ -8,7 +8,7 @@ module.exports = (handler) => {
         let username = req.body.username;
         let password = req.body.password;
 
-        handler.validateCredentials(username, password).then(profile => {
+        handler.validateUser(username, password).then(profile => {
             console.log('profile', profile);
             res.json(profile);
         }, error => {

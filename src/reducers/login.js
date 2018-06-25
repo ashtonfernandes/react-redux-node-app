@@ -2,12 +2,12 @@ import { types } from '../actions/loginActions';
 
 const INITIAL_STATE = {
     isLoginPending: false,
-    isLoginSuccess: false,
+    profile: localStorage.getItem('profile'),
     loginError: null
 };
 
 export const isLoggedIn = (state) => {
-    if (state.isLoginSuccess && !state.loginError) {
+    if (state.profile && !state.loginError) {
         return true;
     } else {
         return false;
@@ -24,9 +24,10 @@ export default (state = INITIAL_STATE, action) => {
             };
 
         case types.LOGIN_SUCCESS:
+        localStorage.setItem('profile', action.profile.username);
             return {
                 ...state,
-                isLoginSuccess: action.isLoginSuccess
+                profile: action.profile
             };
 
         case types.LOGIN_ERROR:
@@ -36,9 +37,10 @@ export default (state = INITIAL_STATE, action) => {
             };
 
         case types.LOGOUT_SUCCESS:
+        localStorage.removeItem('profile');
             return {
                 ...state,
-                isLoginSuccess: false
+                profile: false
             };
 
         default:

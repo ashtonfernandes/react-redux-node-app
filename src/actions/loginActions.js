@@ -1,3 +1,5 @@
+import { loginUser } from '../Service/service';
+
 export const types = {
     LOGIN_PENDING: 'LOGIN_PENDING',
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
@@ -11,9 +13,9 @@ export const setLoginPending = (isLoginPending) => ({
     isLoginPending
 });
 
-export const setLoginSuccess = (isLoginSuccess) => ({
+export const setLoginSuccess = (profile) => ({
     type: types.LOGIN_SUCCESS,
-    isLoginSuccess
+    profile
 });
 
 export const setLoginError = (loginError) => ({
@@ -25,26 +27,28 @@ export const setLogoutSuccess = () => ({
     type: types.LOGOUT_SUCCESS
 });
 
-const sendLoginRequest = (username, password) => {
-    return new Promise((resolve, reject) => {
-        if (username == 'test' && password == 'user') {
-            return resolve(true);
-        } else {
-            return reject( new Error('Invalid credentials'));
-        }
-    })
-}
+// const sendLoginRequest = (username, password) => {
+//     return new Promise((resolve, reject) => {
+//         if (username == 'test' && password == 'user') {
+//             return resolve(true);
+//         } else {
+//             return reject( new Error('Invalid credentials'));
+//         }
+//     })
+// }
 
 // ACTIONS 
 export const login = (username, password) => dispatch => {
-    return sendLoginRequest(username, password)
-        .then(success => {
+    return loginUser(username, password)
+        .then(profile => {
+            console.log('<<<<<<< profile >>>>>>>>', profile);
             dispatch(setLoginPending(false))
-            dispatch(setLoginSuccess(true))
+            dispatch(setLoginSuccess(profile))
             dispatch(setLoginError(null))
-            return Promise.resolve(success);
+            return Promise.resolve(profile);
         })
         .catch(err => {
+            console.log('<<<<<<< err >>>>>>>>', err);
             dispatch(setLoginPending(true))
             dispatch(setLoginSuccess(false))
             dispatch(setLoginError(err))
