@@ -16,7 +16,6 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background-image: url('../../assets/image/IOT_pattern_light-01.png'); */
     background-color: #ededed;
     opacity: 0.3;
     z-index: -1;
@@ -26,10 +25,8 @@
     margin-top: 18% !important;
     width: 400px !important;
     height: 265px !important;
-    /* position: absolute !important; */
     top: 50% !important;
     left: 50% !important;
-    /* margin-top: -150px !important; */
     margin-left: -200px !important;
 }
 

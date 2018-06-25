@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 const profileIcon = require('../../assets/icons/profile-icon-black.png');
 const companyLogo = require('../../assets/icons/logo.png');
 import { connect } from 'react-redux';
+import { logout } from '../../actions/loginActions';
+import { isLoggedIn } from '../../reducers/loginReducer';
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLogin: this.props.isLogin,
-            isHome: this.props.isHome
         };
     }
 
-    confirmLogout = () => {
+    logout = () => {
         this.setState({
             logoutNow: true
         });
@@ -43,19 +43,21 @@ class Header extends Component {
                     <div className="header-text-small">
                         React Boilerplate
                     </div>
-                    <div>
-                        <img
-                            className="logout-icon"
-                            src={profileIcon}
-                            onClick={this.confirmLogout}
-                        />
-                    </div>
+                    {this.props.isLoggedIn &&
+                        <div>
+                            <img
+                                className="logout-icon"
+                                src={profileIcon}
+                                onClick={this.logout}
+                            />
+                        </div>
+                    }
                 </div>
                 {this.state.logoutNow ? (
                     <div className="logout-container">
                         <div className="logout-container-title">Are you sure you want to logout?</div>
                         <button className="logout-container-button-1" onClick={this.closeLogout}>No</button>
-                        <button className="logout-container-button-2" onClick={this.props.action}>Yes</button>
+                        <button className="logout-container-button-2" onClick={this.props.logout}>Yes</button>
                     </div>
                 ) : null }
             </div>
@@ -63,4 +65,7 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default connect((state, ownProps) => ({
+	...ownProps,
+	isLoggedIn: isLoggedIn(state)
+}), { logout })(Header);

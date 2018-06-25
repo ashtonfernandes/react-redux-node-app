@@ -83,6 +83,7 @@
     padding: 20px;
     z-index: 10;
     border: 1px solid #1d3649;
+    text-align: center;
 }
 
 .logout-container-title {

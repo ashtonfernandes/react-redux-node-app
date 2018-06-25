@@ -30,19 +30,10 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.login(this.state.username, this.state.password).then(success => {
-            console.log('<<<<<<<< success >>>>>>>>>', success);
-            this.setState({
-                errorPresent: false, 
-                username: '', 
-                password: ''
-            });
             this.props.history.push("/home");
         }, err => {
-            console.log('<<<<<<<< err >>>>>>>>>', err);
             this.setState({
-                errorPresent: false, 
-                username: '', 
-                password: ''
+                errorPresent: true, 
             });
         })
         // login(this.state.username, this.state.password).then(x => {
