@@ -29,28 +29,24 @@ class Header extends Component {
     render() {
         return (
             <div className="header-container">
-                <div className="header-left">
-                    <div className="company-logo-container">
-                        <a href="/">
-                            <img
-                                className="company-logo"
-                                src={companyLogo}
-                            />
-                        </a>
-                    </div>
-                </div>
+                <a href="/">
+                    <img
+                        className="company-logo"
+                        src={companyLogo}
+                    />
+                </a>
                 <div className="header-right">
-                    <div className="header-text-small">
+                    <div>
                         React Boilerplate
                     </div>
                     {this.props.isLoggedIn &&
-                        <div>
-                            <img
-                                className="logout-icon"
-                                src={profileIcon}
-                                onClick={this.logout}
-                            />
-                        </div>
+                    <div>
+                        <img
+                            className="logout-icon"
+                            src={profileIcon}
+                            onClick={this.logout}
+                        />
+                    </div>
                     }
                 </div>
                 {this.state.logoutNow && 
