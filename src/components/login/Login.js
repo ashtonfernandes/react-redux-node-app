@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import './Login.css';
-import { Card, Icon, Image, Button, Checkbox, Form } from 'semantic-ui-react';
+import { Card, Button, Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import { login } from '../../Service/service';
 import Home from '../home/Home';
 import Header from '../header/Header';
+import { login } from '../../actions/loginActions'; 
+import { connect } from 'react-redux';
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        if (localStorage.getItem('login') === null) {
-            localStorage.setItem('login', false);
-        }
-        let login = JSON.parse(localStorage.getItem('login'));
+        // if (localStorage.getItem('login') === null) {
+        //     localStorage.setItem('login', false);
+        // }
+        // let login = JSON.parse(localStorage.getItem('login'));
 
         this.state = {
             username: '',
@@ -20,9 +21,6 @@ class Login extends Component {
             isLogin: login,
             errorPresent: false
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSignOut = this.handleSignOut.bind(this);
     }
 
     handleChange = (e) => {
@@ -31,6 +29,22 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.props.login(this.state.username, this.state.password).then(success => {
+            console.log('<<<<<<<< success >>>>>>>>>', success);
+            this.setState({
+                errorPresent: false, 
+                username: '', 
+                password: ''
+            });
+            this.props.history.push("/home");
+        }, err => {
+            console.log('<<<<<<<< err >>>>>>>>>', err);
+            this.setState({
+                errorPresent: false, 
+                username: '', 
+                password: ''
+            });
+        })
         // login(this.state.username, this.state.password).then(x => {
         //     if (x.login) {
         //         localStorage.setItem('login', true);
@@ -47,7 +61,7 @@ class Login extends Component {
     };
 
     handleSignOut = () => {
-        localStorage.setItem('login', false);
+        // localStorage.setItem('login', false);
         this.setState({ isLogin: false, username: '', password: '' });
         // console.log(
         //     'when logout-',
@@ -60,9 +74,9 @@ class Login extends Component {
     render() {
         return (
             <div className="login-container-wrapper">
-                {this.state.isLogin ? (
+                {/* {this.state.isLogin ? (
                     <Home action={this.handleSignOut} />
-                ) : (
+                ) : ( */}
                     <div className="container">
                         <div className="header-container">
                             <Header
@@ -106,10 +120,23 @@ class Login extends Component {
                             </Form>
                         </Card>
                     </div>
-                )}
+                // )}
             </div>
         );
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    // console.log('state', state);
+    return {
+        isLoginPending: state.isLoginPending,
+        isLoginSuccess: state.isLoginSuccess,
+        loginError: state.loginError
+    }
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    login: (username, password) => dispatch(login(username, password))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
