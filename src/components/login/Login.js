@@ -26,15 +26,10 @@ class Login extends Component {
         this.props.login(this.state.username, this.state.password).then(success => {
             this.props.history.push("/home");
         }, err => {
-            console.log(err);
             this.setState({
                 errorPresent: true, 
             });
         })
-    };
-
-    handleSignOut = () => {
-        this.setState({ isLogin: false, username: '', password: '' });
     };
 
     render() {

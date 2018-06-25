@@ -9,7 +9,6 @@ module.exports = (handler) => {
         let password = req.body.password;
 
         handler.validateUser(username, password).then(profile => {
-            console.log('profile', profile);
             res.json(profile);
         }, error => {
             res.sendStatus(401);

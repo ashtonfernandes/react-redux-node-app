@@ -27,28 +27,16 @@ export const setLogoutSuccess = () => ({
     type: types.LOGOUT_SUCCESS
 });
 
-// const sendLoginRequest = (username, password) => {
-//     return new Promise((resolve, reject) => {
-//         if (username == 'test' && password == 'user') {
-//             return resolve(true);
-//         } else {
-//             return reject( new Error('Invalid credentials'));
-//         }
-//     })
-// }
-
 // ACTIONS 
 export const login = (username, password) => dispatch => {
     return loginUser(username, password)
         .then(profile => {
-            console.log('<<<<<<< profile >>>>>>>>', profile);
             dispatch(setLoginPending(false))
             dispatch(setLoginSuccess(profile))
             dispatch(setLoginError(null))
             return Promise.resolve(profile);
         })
         .catch(err => {
-            console.log('<<<<<<< err >>>>>>>>', err);
             dispatch(setLoginPending(true))
             dispatch(setLoginSuccess(false))
             dispatch(setLoginError(err))

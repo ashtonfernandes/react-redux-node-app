@@ -5,8 +5,6 @@ class Handler {
     }
 
     validateUser(username, password) {
-        console.log('username', username);
-        console.log('password', password);
         return new Promise((resolve, reject) => {
             if (USERS[username] && USERS[username].password === password) {
                 let profile = Object.assign({}, USERS[username]);
