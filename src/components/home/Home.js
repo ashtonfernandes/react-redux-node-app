@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Home.css';
 import Header from "../header/Header";
+import { connect } from 'react-redux';
+import { isLoggedIn } from '../../reducers/login';
 
 class Home extends Component {
     constructor(props) {
@@ -9,7 +11,9 @@ class Home extends Component {
             isHome: true,
             isLogin: false
         };
-
+        if (!this.props.isLoggedIn) {
+            this.props.history.push("/");
+        }
     }
 
     render() {
@@ -23,4 +27,10 @@ class Home extends Component {
     }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: isLoggedIn(state),
+    }
+};
+
+export default connect(mapStateToProps, {})(Home);

@@ -12,7 +12,7 @@
     left: 0;
     z-index: 10;
     justify-content: space-between;
-    background-color: #2185d0;
+    background-color: #191919;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -25,19 +25,19 @@
     margin-top: 4px;
 }
 
-.logout-icon {
+/* .logout-icon {
     height: 26px;
     margin-top: 8px;
     margin-left: 10px;
     margin-right: 2px;
     align-items: center;
     cursor: pointer;
-}
+} */
 
 .logout-container {
     background-color: white;
     width: 400px;
-    height: 120px;
+    height: 110px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -79,12 +79,12 @@
 }
 
 .logout-container-button-1:hover {
-    background-color: #1678c2;
+    background-color: #2185d0;
     transform: scale(1.2);
 }
 
 .logout-container-button-2:hover {
-    background-color: #1678c2;
+    background-color: #2185d0;
     transform: scale(1.1);
 }
 
@@ -93,4 +93,36 @@
     margin-right: 10px;
     line-height: 2em;
     align-items: center;
+}
+
+.language-picker {
+    display: flex;
+    list-style: none;
+    width: 150px;
+    justify-content: space-between;
+    padding-left: 0px;
+    padding-right: 10px;
+    margin-right: 20px;
+    border-right: 1px solid white;
+}
+
+.language-picker a {
+    color: #a4a4a4;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.language-picker a:hover {
+    color: #fff;
+}
+
+.sign-out {
+    color: #a4a4a4;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.sign-out:hover {
+    color: #fff;
 }

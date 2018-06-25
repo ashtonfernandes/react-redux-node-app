@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
-const profileIcon = require('../../assets/icons/profile-icon-black.png');
 const companyLogo = require('../../assets/icons/logo.png');
 import { connect } from 'react-redux';
 import { logout } from '../../actions/loginActions';
@@ -36,16 +35,18 @@ class Header extends Component {
                     />
                 </a>
                 <div className="header-right">
+                    <ul className="language-picker">
+                        <li><a href="#" data-target="#" >EN</a></li>
+                        <li><a href="#" data-target="#" >LT</a></li>
+                        <li><a href="#" data-target="#" >RU</a></li>
+                    </ul>
+
                     <div>
                         React Boilerplate
                     </div>
                     {this.props.isLoggedIn &&
-                    <div>
-                        <img
-                            className="logout-icon"
-                            src={profileIcon}
-                            onClick={this.logout}
-                        />
+                    <div className="sign-out" onClick={this.logout}>
+                        Sign Out
                     </div>
                     }
                 </div>
@@ -53,7 +54,7 @@ class Header extends Component {
                     <div className="logout-container">
                         <div className="logout-container-title">Are you sure you want to logout?</div>
                         <button className="logout-container-button-1" onClick={this.closeLogout}>No</button>
-                        <button className="logout-container-button-2" onClick={this.props.logout}>Yes</button>
+                        <a href="/"><button onClick={this.props.logout} className="logout-container-button-2">Yes</button></a>
                     </div>
                 }
             </div>
@@ -62,7 +63,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log('states', state);
     return {
         isLoggedIn: isLoggedIn(state),
     }
