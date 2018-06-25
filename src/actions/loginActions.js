@@ -1,15 +1,9 @@
-// const LOGIN_PENDING = 'LOGIN_PENDING'
-// const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-// const LOGIN_ERROR = 'LOGIN_ERROR'
-
 export const types = {
     LOGIN_PENDING: 'LOGIN_PENDING',
     LOGIN_SUCCESS: 'LOGIN_SUCCESS',
     LOGIN_ERROR: 'LOGIN_ERROR',
     LOGOUT_SUCCESS: 'LOGOUT_SUCCESS'
 }
-
-// import { login as loginAPI } from '../Service/service';
 
 // ACTION GENERATORS
 export const setLoginPending = (isLoginPending) => ({

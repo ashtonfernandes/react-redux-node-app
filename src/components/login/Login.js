@@ -69,15 +69,9 @@ class Login extends Component {
                     <Home action={this.handleSignOut} />
                 ) : ( */}
                     <div className="container">
-                        <div className="header-container">
-                            <Header
-                                isLogin={this.state.isLogin}
-                                isHome={this.state.isHome}
-                                isDashboard={this.state.isDashboard}
-                                action={this.props.action}
-                            />
-                        </div>
-
+                        {/* <div className="header-container">
+                            <Header />
+                        </div> */}
                         <Card className="card-element">
                             <Form onSubmit={this.handleSubmit}>
                                 <Form.Field>

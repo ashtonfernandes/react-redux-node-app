@@ -16,12 +16,6 @@ class PageNotFound extends Component {
     render() {
         return (
             <div className="home-container">
-                <Header
-                    isLogin={this.state.isLogin}
-                    isHome={this.state.isHome}
-                    isDashboard={this.state.isDashboard}
-                    action={this.props.action}
-                />
                 <div className="home-header">
                     <div>Page Not Found</div>
                     <br />

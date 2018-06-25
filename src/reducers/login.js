@@ -17,25 +17,25 @@ export const isLoggedIn = (state) => {
 // REDUCERS
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case 'LOGIN_PENDING':
+        case types.LOGIN_PENDING:
             return {
                 ...state,
                 isLoginPending: action.isLoginPending
             };
 
-        case 'LOGIN_SUCCESS':
+        case types.LOGIN_SUCCESS:
             return {
                 ...state,
                 isLoginSuccess: action.isLoginSuccess
             };
 
-        case 'LOGIN_ERROR':
+        case types.LOGIN_ERROR:
             return {
                 ...state,
                 loginError: action.loginError
             };
 
-        case 'LOGOUT_SUCCESS':
+        case types.LOGOUT_SUCCESS:
             return {
                 ...state,
                 isLoginSuccess: false

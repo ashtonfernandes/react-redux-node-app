@@ -5,7 +5,7 @@ const profileIcon = require('../../assets/icons/profile-icon-black.png');
 const companyLogo = require('../../assets/icons/logo.png');
 import { connect } from 'react-redux';
 import { logout } from '../../actions/loginActions';
-import { isLoggedIn } from '../../reducers/loginReducer';
+import { isLoggedIn } from '../../reducers/login';
 
 class Header extends Component {
     constructor(props) {
@@ -31,12 +31,12 @@ class Header extends Component {
             <div className="header-container">
                 <div className="header-left">
                     <div className="company-logo-container">
-                        <Link to="/">
+                        <a href="/">
                             <img
                                 className="company-logo"
                                 src={companyLogo}
                             />
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 <div className="header-right">
@@ -65,7 +65,11 @@ class Header extends Component {
     }
 }
 
-export default connect((state, ownProps) => ({
-	...ownProps,
-	isLoggedIn: isLoggedIn(state)
-}), { logout })(Header);
+const mapStateToProps = (state) => {
+    console.log('states', state);
+    return {
+        isLoggedIn: isLoggedIn(state),
+    }
+};
+
+export default connect(mapStateToProps, { logout })(Header);
