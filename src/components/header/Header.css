@@ -1,7 +1,3 @@
-* {
-    font-family: Helvetica !important;
-}
-
 .header-container {
     align-items: center;
     display: flex;
@@ -36,13 +32,13 @@
 
 .logout-container {
     background-color: white;
-    width: 400px;
-    height: 95px;
+    width: 300px;
+    height: 130px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: 150px;
-    margin-left: -220px;
+    margin-left: -150px;
     border-radius: 2px;
     padding: 20px;
     z-index: 10;

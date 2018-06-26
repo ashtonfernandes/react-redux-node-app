@@ -1,11 +1,11 @@
 .login-form {
     background-color: white;
-    width: 300px;
-    height: 210px;
+    width: 320px;
+    height: 250px;
     position: absolute;
     top: 30%;
     left: 50%;
-    margin-left: -180px;
+    margin-left: -160px;
     border-radius: 4px;
     padding: 30px 30px 0 30px;;
     text-align: center;

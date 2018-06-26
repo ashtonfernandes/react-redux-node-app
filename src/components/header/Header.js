@@ -42,12 +42,13 @@ class Header extends Component {
                         <li><a href="#" data-target="#" >FR</a></li>
                     </ul> */}
 
-                    <div>
-                        React Boilerplate
-                    </div>
-                    {this.props.isLoggedIn &&
+                    {this.props.isLoggedIn ?
                     <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
                         Sign Out
+                    </div>
+                    :
+                    <div>
+                        React Boilerplate
                     </div>
                     }
                 </div>
