@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { logout } from '../../actions/loginActions';
-import { isLoggedIn } from '../../reducers/login';
+import { isLoggedIn } from '../../reducers/loginReducer';
 import './Header.css';
 
 const companyLogo = require('../../assets/icons/logo.png');

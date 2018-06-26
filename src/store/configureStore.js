@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import loginReducer from '../reducers/login';
+import loginReducer from '../reducers/loginReducer';
 
 const initialState = {};
 const middleWare = [thunk];
