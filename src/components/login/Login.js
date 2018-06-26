@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Validator from 'validator';
 import PropTypes from 'prop-types'
 import { login } from '../../actions/loginActions'; 
 import { isLoggedIn } from '../../reducers/loginReducer';
 import './Login.css';
+import InLineErrorMessage from '../inLineErrorMessage/InLineErrorMessage';
 
 class Login extends Component {
     constructor(props) {
@@ -11,6 +13,7 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            errors: {},
             errorPresent: false
         };
     }
@@ -21,16 +24,32 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const errors = this.validate(this.state.username, this.state.password);
+        this.setState({ 
+            errors,
+            errorPresent: false, 
+         });
         this.props.login(this.state.username, this.state.password).then(success => {
-            this.props.history.push("/home");
+        this.props.history.push("/home");
         }, err => {
             this.setState({
+                errors,
                 errorPresent: true, 
             });
         })
     };
 
+    validate = (username, password) => {
+        const errors = {};
+        // if (!Validator.isEmail(username)) errors.username = "Username incorrect";
+        if (!username) errors.username = "Username field empty";
+        if (!password) errors.password = "Password field empty";
+        return errors;
+    }
+
     render() {
+
+        const { errors } = this.state;
         return (
             <div>
                 {this.props.isLoggedIn ?
@@ -49,6 +68,7 @@ class Login extends Component {
                                     onChange={this.handleChange}
                                     placeholder="username"
                                 />
+                                { errors && errors.username && <InLineErrorMessage text={errors.username} /> }
                             </div>
                             <div>
                                 <input
@@ -59,6 +79,7 @@ class Login extends Component {
                                     type="password"
                                     placeholder="password"
                                 />
+                                { errors && errors.password && <InLineErrorMessage text={errors.password} /> }
                             </div>
                             {this.state.errorPresent && 
                                 <div className="login-error-case">
