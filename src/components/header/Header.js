@@ -55,8 +55,10 @@ class Header extends Component {
                 {this.state.logoutNow && 
                     <div className="logout-container">
                         <div className="logout-container-title">Are you sure you want to logout?</div>
-                        <button type="submit" className="logout-container-button-1" onClick={this.closeLogout}>No</button>
-                        <a href="/"><button type="submit" onClick={this.props.logout} className="logout-container-button-2">Yes</button></a>
+                        <div>
+                            <button type="submit" className="logout-container-button" onClick={this.closeLogout}>No</button>
+                            <a href="/"><button type="submit" onClick={this.props.logout} className="logout-container-button">Yes</button></a>
+                        </div>
                     </div>
                 }
             </div>

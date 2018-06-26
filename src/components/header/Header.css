@@ -21,15 +21,6 @@
     margin-top: 4px;
 }
 
-/* .logout-icon {
-    height: 26px;
-    margin-top: 8px;
-    margin-left: 10px;
-    margin-right: 2px;
-    align-items: center;
-    cursor: pointer;
-} */
-
 .logout-container {
     background-color: white;
     width: 300px;
@@ -37,7 +28,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: 150px;
+    margin-top: 200px;
     margin-left: -150px;
     border-radius: 2px;
     padding: 20px;
@@ -53,18 +44,7 @@
     margin-bottom: 20px;
 }
 
-.logout-container-button-1 {
-    padding: 10px;
-    width: 80px;
-    background-color: #2185d0;
-    border: 1px solid #2185d0;
-    color: white;
-    border-radius: 2px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.logout-container-button-2 {
+.logout-container-button {
     padding: 10px;
     width: 80px;
     background-color: #2185d0;
@@ -72,6 +52,7 @@
     color: white;
     border-radius: 2px;
     cursor: pointer;
+    margin: 5px;
 }
 
 .header-right {
