@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './Login.css';
-import Home from '../home/Home';
-import Header from '../header/Header';
-import { login } from '../../actions/loginActions'; 
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+import { login } from '../../actions/loginActions'; 
 import { isLoggedIn } from '../../reducers/login';
+import './Login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -12,7 +11,6 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            isLogin: login,
             errorPresent: false
         };
     }
@@ -44,7 +42,6 @@ class Login extends Component {
                     <div className="login-form">
                         <form onSubmit={this.handleSubmit}>
                             <div>
-                                {/* <label>Username</label> */}
                                 <input
                                     id="username"
                                     name="username"
@@ -54,7 +51,6 @@ class Login extends Component {
                                 />
                             </div>
                             <div>
-                                {/* <label>Password</label> */}
                                 <input
                                     id="password"
                                     name="password"
@@ -81,8 +77,15 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+Login.propTypes = {
+    login: PropTypes.string.isRequired,
+    history: PropTypes.string.isRequired,
+    isLoggedIn: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state, ownProps) => {
     return {
+        ...ownProps,
         isLoggedIn: isLoggedIn(state),
     }
 };

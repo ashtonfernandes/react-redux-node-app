@@ -43,7 +43,7 @@
     left: 50%;
     margin-top: 150px;
     margin-left: -200px;
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 20px;
     z-index: 10;
     color: black;
@@ -63,7 +63,7 @@
     background-color: #2185d0;
     border: 1px solid #2185d0;
     color: white;
-    border-radius: 4px;
+    border-radius: 2px;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -74,11 +74,11 @@
     background-color: #2185d0;
     border: 1px solid #2185d0;
     color: white;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
 }
 
-.logout-container-button-1:hover {
+/* .logout-container-button-1:hover {
     background-color: #2185d0;
     transform: scale(1.2);
 }
@@ -86,7 +86,7 @@
 .logout-container-button-2:hover {
     background-color: #2185d0;
     transform: scale(1.1);
-}
+} */
 
 .header-right {
     display: flex;

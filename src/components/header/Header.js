@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './Header.css';
-import { Link } from 'react-router-dom';
-const companyLogo = require('../../assets/icons/logo.png');
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import { logout } from '../../actions/loginActions';
 import { isLoggedIn } from '../../reducers/login';
+import './Header.css';
+
+const companyLogo = require('../../assets/icons/logo.png');
 
 class Header extends Component {
     constructor(props) {
@@ -30,21 +31,22 @@ class Header extends Component {
             <div className="header-container">
                 <a href="/home">
                     <img
+                        alt="logo"
                         className="company-logo"
                         src={companyLogo}
                     />
                 </a>
                 <div className="header-right">
-                    <ul className="language-picker">
+                    {/* <ul className="language-picker">
                         <li><a href="#" data-target="#" >EN</a></li>
                         <li><a href="#" data-target="#" >FR</a></li>
-                    </ul>
+                    </ul> */}
 
                     <div>
                         React Boilerplate
                     </div>
                     {this.props.isLoggedIn &&
-                    <div className="sign-out" onClick={this.logout}>
+                    <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
                         Sign Out
                     </div>
                     }
@@ -52,14 +54,19 @@ class Header extends Component {
                 {this.state.logoutNow && 
                     <div className="logout-container">
                         <div className="logout-container-title">Are you sure you want to logout?</div>
-                        <button className="logout-container-button-1" onClick={this.closeLogout}>No</button>
-                        <a href="/"><button onClick={this.props.logout} className="logout-container-button-2">Yes</button></a>
+                        <button type="submit" className="logout-container-button-1" onClick={this.closeLogout}>No</button>
+                        <a href="/"><button type="submit" onClick={this.props.logout} className="logout-container-button-2">Yes</button></a>
                     </div>
                 }
             </div>
         );
     }
 }
+
+Header.propTypes = {
+    logout: PropTypes.string.isRequired,
+    isLoggedIn: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state) => {
     return {

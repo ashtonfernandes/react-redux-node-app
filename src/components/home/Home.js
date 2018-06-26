@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import './Home.css';
-import Header from "../header/Header";
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 import { isLoggedIn } from '../../reducers/login';
+import './Home.css';
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isHome: true,
-            isLogin: false
         };
         if (!this.props.isLoggedIn) {
             this.props.history.push("/");
@@ -27,8 +25,14 @@ class Home extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+Home.propTypes = {
+    history: PropTypes.string.isRequired,
+    isLoggedIn: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state, ownProps) => {
     return {
+        ...ownProps,
         isLoggedIn: isLoggedIn(state),
     }
 };

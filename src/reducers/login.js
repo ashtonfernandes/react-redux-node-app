@@ -9,8 +9,6 @@ const INITIAL_STATE = {
 export const isLoggedIn = (state) => {
     if (state.profile && !state.loginError) {
         return true;
-    } else {
-        return false;
     }
 }
 

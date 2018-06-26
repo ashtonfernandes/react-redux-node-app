@@ -28,8 +28,8 @@ export const setLogoutSuccess = () => ({
 });
 
 // ACTIONS 
-export const login = (username, password) => dispatch => {
-    return loginUser(username, password)
+export const login = (username, password) => dispatch => 
+    loginUser(username, password)
         .then(profile => {
             dispatch(setLoginPending(false))
             dispatch(setLoginSuccess(profile))
@@ -42,7 +42,7 @@ export const login = (username, password) => dispatch => {
             dispatch(setLoginError(err))
             return Promise.reject(err);
         })
-}
+
 
 export const logout = () => dispatch => {
     dispatch(setLogoutSuccess());

@@ -1,4 +1,4 @@
-console.log('ok');
+// console.log('ok');
 
 // const person = {
 //     name: 'Ashton Fernandes',
@@ -17,6 +17,6 @@ console.log('ok');
 // console.log(`${name} is ${age} years old and lives in ${location.city} where the temperature is ${location.temp} degrees celcius.`);
 
 
-const address = ['123 Anywhere Drive', 'Mississauga', 'Mntario'];
+// const address = ['123 Anywhere Drive', 'Mississauga', 'Mntario'];
 
-console.log(`You are in ${address[1]}`)
+// console.log(`You are in ${address[1]}`)

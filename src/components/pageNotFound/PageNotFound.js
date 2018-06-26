@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import './PageNotFound.css';
-import Header from "../header/Header";
 
 class PageNotFound extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isHome: true,
-            isLogin: false
         };
 
     }
