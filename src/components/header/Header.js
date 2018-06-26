@@ -37,8 +37,7 @@ class Header extends Component {
                 <div className="header-right">
                     <ul className="language-picker">
                         <li><a href="#" data-target="#" >EN</a></li>
-                        <li><a href="#" data-target="#" >LT</a></li>
-                        <li><a href="#" data-target="#" >RU</a></li>
+                        <li><a href="#" data-target="#" >FR</a></li>
                     </ul>
 
                     <div>

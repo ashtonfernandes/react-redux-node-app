@@ -98,7 +98,7 @@
 .language-picker {
     display: flex;
     list-style: none;
-    width: 150px;
+    width: 90px;
     justify-content: space-between;
     padding-left: 0px;
     padding-right: 10px;

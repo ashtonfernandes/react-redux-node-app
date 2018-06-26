@@ -44,8 +44,9 @@ class Login extends Component {
                     <div className="login-form">
                         <form onSubmit={this.handleSubmit}>
                             <div>
-                                <label>Username</label>
+                                {/* <label>Username</label> */}
                                 <input
+                                    id="username"
                                     name="username"
                                     value={this.state.username}
                                     onChange={this.handleChange}
@@ -53,8 +54,9 @@ class Login extends Component {
                                 />
                             </div>
                             <div>
-                                <label>Password</label>
+                                {/* <label>Password</label> */}
                                 <input
+                                    id="password"
                                     name="password"
                                     value={this.state.password}
                                     onChange={this.handleChange}
