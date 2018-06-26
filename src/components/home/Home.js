@@ -26,7 +26,7 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    history: PropTypes.string.isRequired,
+    history: PropTypes.object.isRequired,
     isLoggedIn: PropTypes.string.isRequired,
 };
 

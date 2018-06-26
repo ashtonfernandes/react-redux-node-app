@@ -60,15 +60,14 @@ class Login extends Component {
                                     placeholder="password"
                                 />
                             </div>
-                            <button className="login-button" type="submit">
-                                Login
-                            </button>
                             {this.state.errorPresent && 
                                 <div className="login-error-case">
                                     <div>Incorrect Username or Password entered.</div>
-                                    <div>Please enter the correct credentials.</div>
                                 </div>
                             }
+                            <button className="login-button" type="submit">
+                                Login
+                            </button>
                         </form>
                     </div>
                 }
@@ -79,7 +78,7 @@ class Login extends Component {
 
 Login.propTypes = {
     login: PropTypes.string.isRequired,
-    history: PropTypes.string.isRequired,
+    history: PropTypes.object.isRequired,
     isLoggedIn: PropTypes.string.isRequired,
 };
 

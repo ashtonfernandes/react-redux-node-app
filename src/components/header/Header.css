@@ -37,12 +37,12 @@
 .logout-container {
     background-color: white;
     width: 400px;
-    height: 110px;
+    height: 95px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: 150px;
-    margin-left: -200px;
+    margin-left: -220px;
     border-radius: 2px;
     padding: 20px;
     z-index: 10;
@@ -77,16 +77,6 @@
     border-radius: 2px;
     cursor: pointer;
 }
-
-/* .logout-container-button-1:hover {
-    background-color: #2185d0;
-    transform: scale(1.2);
-}
-
-.logout-container-button-2:hover {
-    background-color: #2185d0;
-    transform: scale(1.1);
-} */
 
 .header-right {
     display: flex;
