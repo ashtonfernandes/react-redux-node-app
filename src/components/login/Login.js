@@ -30,9 +30,9 @@ class Login extends Component {
         });
 
         if (Object.keys(errors).length === 0) {
-            this.props.login(this.state.username, this.state.password).then((success) => {
+            this.props.login(this.state.username, this.state.password).then(() => {
                 this.props.history.push("/home");
-            }, (err) => {
+            }, () => {
                 this.setState({
                     loginError: true
                 });
