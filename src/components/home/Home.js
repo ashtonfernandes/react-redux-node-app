@@ -26,8 +26,10 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-    history: PropTypes.object.isRequired,
-    isLoggedIn: PropTypes.string.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
+    // isLoggedIn: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

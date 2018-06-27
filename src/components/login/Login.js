@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Validator from 'validator';
 import PropTypes from 'prop-types'
 import { login } from '../../actions/loginActions'; 
 import { isLoggedIn } from '../../reducers/loginReducer';
@@ -14,7 +13,7 @@ class Login extends Component {
             username: '',
             password: '',
             errors: {},
-            errorPresent: false
+            loginError: false
         };
     }
 
@@ -27,16 +26,21 @@ class Login extends Component {
         const errors = this.validate(this.state.username, this.state.password);
         this.setState({ 
             errors,
-            errorPresent: false, 
-         });
-        this.props.login(this.state.username, this.state.password).then(success => {
-        this.props.history.push("/home");
-        }, err => {
-            this.setState({
-                errors,
-                errorPresent: true, 
-            });
-        })
+            loginError: false
+        });
+
+        if (Object.keys(errors).length === 0) {
+            this.props.login(this.state.username, this.state.password).then((success) => {
+                this.setState({loginError:false, username:'', password:''});
+                console.log('success', success)
+                this.props.history.push("/home");
+            }, (err) => {
+                console.log('err', err)
+                this.setState({
+                    loginError: true
+                });
+            })
+        }
     };
 
     validate = (username, password) => {
@@ -81,7 +85,7 @@ class Login extends Component {
                                 />
                                 { errors && errors.password && <InLineErrorMessage text={errors.password} /> }
                             </div>
-                            {this.state.errorPresent && 
+                            {this.state.loginError && 
                                 <div className="login-error-case">
                                     <div>Incorrect Username or Password entered.</div>
                                 </div>
@@ -98,9 +102,11 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-    login: PropTypes.string.isRequired,
-    history: PropTypes.object.isRequired,
-    isLoggedIn: PropTypes.string.isRequired,
+    login: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
+    // isLoggedIn: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -110,8 +116,8 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    login: (username, password) => dispatch(login(username, password))
-});
+// const mapDispatchToProps = (dispatch) => ({
+//     login: (username, password) => dispatch(login(username, password))
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { login })(Login);

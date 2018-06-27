@@ -8,6 +8,8 @@ module.exports = (handler) => {
         let username = req.body.username;
         let password = req.body.password;
 
+        console.log(req.body.username);
+
         handler.validateUser(username, password).then(profile => {
             res.json(profile);
         }, error => {
