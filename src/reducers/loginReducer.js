@@ -2,11 +2,11 @@ import { types } from '../actions/types';
 
 const INITIAL_STATE = {
     profile: localStorage.getItem('profile'),
-    loginError: null
+    loginError: false
 };
 
 export const isLoggedIn = (state) => {
-    if (state.profile && !state.loginError) {
+    if (state.loginReducer.profile && !state.loginReducer.loginError) {
         return true;
     }
 }
@@ -18,7 +18,8 @@ export default (state = INITIAL_STATE, action) => {
         localStorage.setItem('profile', action.profile);
             return {
                 ...state,
-                profile: action.profile
+                profile: action.profile,
+                loginError: false
             };
 
         case types.LOGIN_ERROR:

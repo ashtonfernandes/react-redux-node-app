@@ -43,13 +43,13 @@ class Header extends Component {
                     </ul> */}
 
                     {this.props.isLoggedIn ?
-                    <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
-                        Sign Out
-                    </div>
-                    :
-                    <div>
-                        React Boilerplate
-                    </div>
+                        <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
+                            Sign Out
+                        </div>
+                        :
+                        <div>
+                            React Boilerplate
+                        </div>
                     }
                 </div>
                 {this.state.logoutNow && 
