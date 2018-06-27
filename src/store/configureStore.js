@@ -9,7 +9,7 @@ const middleWare = [thunk];
 
 export default () => { 
     const store = createStore(
-        loginreducer, initialState, composeWithDevTools(applyMiddleware(...middleWare))
+        rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleWare))
     );
     return store;
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { login } from '../../actions/loginActions'; 
 import { isLoggedIn } from '../../reducers/loginReducer';
 import './Login.css';
@@ -31,11 +31,10 @@ class Login extends Component {
 
         if (Object.keys(errors).length === 0) {
             this.props.login(this.state.username, this.state.password).then((success) => {
-                this.setState({loginError:false, username:'', password:''});
-                console.log('success', success)
+                console.log('success', success);
                 this.props.history.push("/home");
             }, (err) => {
-                console.log('err', err)
+                console.log('err', err);
                 this.setState({
                     loginError: true
                 });
