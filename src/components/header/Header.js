@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { logout } from '../../actions/loginActions';
 import { setLocale } from '../../actions/localeActions';
 import { isLoggedIn } from '../../reducers/loginReducer';
@@ -45,17 +46,17 @@ class Header extends Component {
 
                     {this.props.isLoggedIn ?
                         <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
-                            Sign Out
+                            <FormattedMessage id="header.sign_out" defaultMessage="Sign Out"/>
                         </div>
                         :
                         <div>
-                            React Boilerplate
+                            <FormattedMessage id="header.name" defaultMessage="React Boilerplate"/>
                         </div>
                     }
                 </div>
                 {this.state.logoutNow && 
                     <div className="logout-container">
-                        <div className="logout-container-title">Are you sure you want to logout?</div>
+                        <div className="logout-container-title"><FormattedMessage id="header.confirmation" defaultMessage="Are you sure you want to logout?"/></div>
                         <div>
                             <button type="submit" className="logout-container-button" onClick={this.closeLogout}>No</button>
                             <a href="/"><button type="submit" onClick={this.props.logout} className="logout-container-button">Yes</button></a>
