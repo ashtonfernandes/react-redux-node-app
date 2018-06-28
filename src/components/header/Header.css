@@ -73,13 +73,14 @@
     border-right: 1px solid white;
 }
 
-.language-picker a {
+.language-picker div {
     color: #a4a4a4;
     text-decoration: none;
     padding: 10px;
+    cursor: pointer;
 }
 
-.language-picker a:hover {
+.language-picker div:hover {
     color: #fff;
 }
 

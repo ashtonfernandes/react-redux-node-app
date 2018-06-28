@@ -31,16 +31,22 @@
     color: white;
     background-color: #2185d0;
     border: 1px solid #2185d0;
-    width: 80%;
+    width: 35%;
     border-radius: 2px;
-    margin-top: 55px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0);
 }
 
 .login-error-case {
-    color: red;
+    color: #ae1100;
     position: absolute;
     left: 0;
     right: 0;
     margin-top: 20px;
+}
+
+.login-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 55px;
 }

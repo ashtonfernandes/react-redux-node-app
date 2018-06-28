@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { logout } from '../../actions/loginActions';
+import { setLocale } from '../../actions/localeActions';
 import { isLoggedIn } from '../../reducers/loginReducer';
 import './Header.css';
 
@@ -37,10 +38,10 @@ class Header extends Component {
                     />
                 </a>
                 <div className="header-right">
-                    {/* <ul className="language-picker">
-                        <li><a href="#" data-target="#" >EN</a></li>
-                        <li><a href="#" data-target="#" >FR</a></li>
-                    </ul> */}
+                    <div className="language-picker">
+                        <div role="button" onClick={() => this.props.setLocale('en')}>EN</div>
+                        <div role="button" onClick={() => this.props.setLocale('fr')}>FR</div>
+                    </div>
 
                     {this.props.isLoggedIn ?
                         <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
@@ -67,13 +68,15 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    // isLoggedIn: PropTypes.func.isRequired
+    isLoggedIn: PropTypes.func.isRequired,
+    // setLocale: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        isLoggedIn: isLoggedIn(state),
+        ...ownProps,
+        isLoggedIn: isLoggedIn(state)
     }
 };
 
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(mapStateToProps, { logout, setLocale })(Header);

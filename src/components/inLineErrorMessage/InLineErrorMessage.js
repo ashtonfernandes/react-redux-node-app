@@ -5,7 +5,7 @@ import './inLineErrorMessage.css';
 const InLineErrorMessage = ( error ) => {
     return (
         Object.keys(error).map((key, text) => {
-            return <span className="in-line-error-message" key={key}>{error.text}</span>
+            return <span className="in-line-error-message" key={key}>! {error.text}</span>
         })
     );
 }

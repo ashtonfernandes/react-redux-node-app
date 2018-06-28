@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { login } from '../../actions/loginActions'; 
 import { isLoggedIn } from '../../reducers/loginReducer';
 import './Login.css';
@@ -87,9 +89,12 @@ class Login extends Component {
                                     <div>Incorrect Username or Password entered.</div>
                                 </div>
                             }
-                            <button className="login-button" type="submit">
-                                Login
-                            </button>
+                            <div className="login-button-container">
+                                <button className="login-button" type="submit">
+                                    Login
+                                </button>
+                                <Link to="/reset"><FormattedMessage id="login.forgot" defaultMessage="Forgot password?"/></Link>
+                            </div>
                         </form>
                     </div>
                 }

@@ -11,7 +11,7 @@ const SRC = path.resolve("src");
 
 module.exports = {
   devtool: IS_PROD ? "" : "cheap-module-source-map",
-  entry: "./src/app.js",
+  entry: "./src/index.js",
   output: {
     path:path.resolve("public"),
     filename: "bundle.js"
