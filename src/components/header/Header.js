@@ -29,7 +29,7 @@ class Header extends Component {
     render() {
         return (
             <div className="header-container">
-                <a href="/home">
+                <a href="/">
                     <img
                         alt="logo"
                         className="company-logo"

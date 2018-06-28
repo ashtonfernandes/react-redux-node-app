@@ -13,11 +13,15 @@ class AppRouter extends Component {
             <div>
                 <Header />
                 <BrowserRouter>
-                    <Switch>
-                        <Route path="/" component={Login} exact={true}/>
-                        <Route path="/home" component={Home}  />
-                        <Route component={PageNotFound} />
-                    </Switch>
+                    <main>
+                        <Switch>
+                            <Route exact path="/" render={(props) => (
+                                <Home {...props} />
+                            )}/>
+                            <Route path="/login" component={Login} />
+                            <Route component={PageNotFound} />
+                        </Switch>
+                    </main>
                 </BrowserRouter>  
             </div>
         )

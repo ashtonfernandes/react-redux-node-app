@@ -31,7 +31,7 @@ class Login extends Component {
 
         if (Object.keys(errors).length === 0) {
             this.props.login(this.state.username, this.state.password).then(() => {
-                this.props.history.push("/home");
+                this.props.history.push("/");
             }, () => {
                 this.setState({
                     loginError: true
@@ -56,7 +56,7 @@ class Login extends Component {
                 {this.props.isLoggedIn ?
                     <div>
                         <div>User is already logged In</div>
-                        <a href="/home">Go Home</a>
+                        <a href="/">Go Home</a>
                     </div>
                     :
                     <div className="login-form">

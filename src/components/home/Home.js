@@ -10,7 +10,7 @@ class Home extends Component {
         this.state = {
         };
         if (!this.props.isLoggedIn) {
-            this.props.history.push("/");
+            this.props.history.push("/login");
         }
     }
 
