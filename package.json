@@ -5,8 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production node ./srv/server.js",
-    "dev": "webpack-dev-server --hot",
-    "start:dev": "concurrently \"node ./srv/server.js\" \"webpack -w\"",
+    "dev": "concurrently \"node ./srv/server.js\" \"webpack -w\"",
     "build": "webpack",
     "lint": "eslint src"
   },

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 import { isLoggedIn } from '../../reducers/loginReducer';
 import './Home.css';
 
@@ -18,7 +19,7 @@ class Home extends Component {
         return (
             <div className="home-container">
                 <div className="home-header">
-                    Welcome to your React app
+                    <FormattedMessage id="home.welcome" defaultMessage="Welcome to your React app"/>
                 </div>
             </div>
         );

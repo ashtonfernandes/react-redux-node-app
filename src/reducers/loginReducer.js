@@ -1,4 +1,4 @@
-import { types } from '../actions/types';
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../actions/types';
 
 const INITIAL_STATE = {
     profile: localStorage.getItem('profile'),
@@ -14,7 +14,7 @@ export const isLoggedIn = (state) => {
 // REDUCERS
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case types.LOGIN_SUCCESS:
+        case LOGIN_SUCCESS:
         localStorage.setItem('profile', action.profile);
             return {
                 ...state,
@@ -22,13 +22,13 @@ export default (state = INITIAL_STATE, action) => {
                 loginError: false
             };
 
-        case types.LOGIN_ERROR:
+        case LOGIN_ERROR:
             return {
                 ...state,
                 loginError: action.loginError
             };
         
-        case types.LOGOUT_SUCCESS:
+        case LOGOUT_SUCCESS:
         localStorage.removeItem('profile');
             return {
                 ...state,

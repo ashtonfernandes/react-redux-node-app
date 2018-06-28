@@ -68,7 +68,7 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    isLoggedIn: PropTypes.func.isRequired,
+    // isLoggedIn: PropTypes.func.isRequired,
     // setLocale: PropTypes.func.isRequired
 };
 

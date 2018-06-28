@@ -1,19 +1,19 @@
-import { types } from './types';
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from './types';
 import { loginUser } from '../services/services';
 
 // ACTION GENERATORS
 export const setLoginSuccess = (profile) => ({
-    type: types.LOGIN_SUCCESS,
+    type: LOGIN_SUCCESS,
     profile
 });
 
 export const setLoginError = (loginError) => ({
-    type: types.LOGIN_ERROR,
+    type: LOGIN_ERROR,
     loginError
 });
 
 export const setLogoutSuccess = () => ({
-    type: types.LOGOUT_SUCCESS
+    type: LOGOUT_SUCCESS
 });
 
 // THUNK ACTIONS 

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { addLocaleData } from 'react-intl';
 import en from 'react-intl/locale-data/en';
@@ -14,11 +13,9 @@ addLocaleData(fr);
 
 const store = configureStore();
 const jsx = (
-  <BrowserRouter>
     <Provider store={store}>
-      <Route component={AppRouter} />
+      <AppRouter />
     </Provider>
-  </BrowserRouter>  
 );
 
 ReactDOM.render(jsx, document.getElementById('root'));

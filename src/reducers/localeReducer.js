@@ -1,4 +1,4 @@
-import { types } from '../actions/types';
+import { LOCALE_SET } from '../actions/types';
 
 const INITIAL_STATE = {
     lang: localStorage.getItem('lang')
@@ -7,7 +7,7 @@ const INITIAL_STATE = {
 // REDUCERS
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case types.LOCALE_SET:
+        case LOCALE_SET:
         localStorage.setItem('lang', action.lang);
             return {
                 ...state,

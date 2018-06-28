@@ -91,9 +91,9 @@ class Login extends Component {
                             }
                             <div className="login-button-container">
                                 <button className="login-button" type="submit">
-                                    Login
+                                    <FormattedMessage id="login.login" defaultMessage="Login"/>
                                 </button>
-                                <Link to="/reset"><FormattedMessage id="login.forgot" defaultMessage="Forgot password?"/></Link>
+                                <Link to="/reset"><FormattedMessage id="login.forgot_password" defaultMessage="Forgot password?"/></Link>
                             </div>
                         </form>
                     </div>

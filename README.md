@@ -14,12 +14,7 @@ These are the different commands that you could use to run this development envi
 npm install
 ```
 
-To run in development with hot realoading
-```
-npm run start:dev
-```
-
-To run in development without hot realoading
+To run in development
 ```
 npm run dev
 ```

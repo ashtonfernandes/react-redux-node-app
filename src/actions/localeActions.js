@@ -1,8 +1,8 @@
-import { types } from './types';
+import { LOCALE_SET } from './types';
 
 // ACTION GENERATORS
 export const localeSet = (lang) => ({
-    type: types.LOCALE_SET,
+    type: LOCALE_SET,
     lang
 });
 
