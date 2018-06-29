@@ -85,6 +85,16 @@ class Login extends Component {
                                 />
                                 { errors && errors.password && <InLineErrorMessage text={errors.password} /> }
                             </div>
+
+                            <div className="remember-me">
+                                <input type="checkbox" value="None" id="remember-me" name="check" checked />
+                                <label htmlFor="remember-me">
+                                    <span>
+                                        Remember Me
+                                    </span>
+                                </label>
+                            </div>
+
                             {loginError && 
                                 <div className="login-error-case">
                                     <div>Incorrect Username or Password entered.</div>
