@@ -15,12 +15,19 @@ class Login extends Component {
             username: '',
             password: '',
             errors: {},
+            rememberMe: false,
             loginError: false
         };
     }
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+    };
+
+    handleCheckbox = (e) => {
+        this.setState({
+            rememberMe: !this.state.rememberMe
+        });
     };
 
     handleSubmit = (e) => {
@@ -53,7 +60,7 @@ class Login extends Component {
 
     render() {
 
-        const { username, password, errors, loginError } = this.state;
+        const { username, password, errors, loginError, rememberMe } = this.state;
         return (
             <div>
                 {this.props.isLoggedIn ?
@@ -87,7 +94,7 @@ class Login extends Component {
                             </div>
 
                             <div className="remember-me">
-                                <input type="checkbox" value="None" id="remember-me" name="check" checked />
+                                <input type="checkbox" checked={rememberMe} onChange={this.handleCheckbox} id="remember-me" name="check" />
                                 <label htmlFor="remember-me">
                                     <span>
                                         Remember Me
@@ -95,7 +102,7 @@ class Login extends Component {
                                 </label>
                             </div>
 
-                            {loginError && 
+                            { loginError && 
                                 <div className="login-error-case">
                                     <div>Incorrect Username or Password entered.</div>
                                 </div>

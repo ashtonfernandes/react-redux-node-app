@@ -63,9 +63,9 @@
 
 /* Remember Me CheckBox */
 .remember-me {
-    width: 20px;
+    width: 100%;
     position: relative;
-    margin: 15px 0 0 0
+    margin: 15px 0 0 0;
 }
 
 .remember-me label {
@@ -108,6 +108,7 @@
 
 .remember-me label span {
     padding-left: 30px;
+    width: 100%;
     display: flex;
     width: 200px;
 }
