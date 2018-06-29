@@ -1,0 +1,10 @@
+[
+  {
+    "id": "login.login",
+    "defaultMessage": "Login"
+  },
+  {
+    "id": "login.forgot_password",
+    "defaultMessage": "Forgot password?"
+  }
+]

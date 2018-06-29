@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { login } from '../../actions/loginActions'; 
 import { isLoggedIn } from '../../reducers/loginReducer';
-import './Login.css';
 import InLineErrorMessage from '../inLineErrorMessage/InLineErrorMessage';
+import './Login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -24,15 +24,16 @@ class Login extends Component {
     };
 
     handleSubmit = (e) => {
+        const { username, password } = this.state;
         e.preventDefault();
-        const errors = this.validate(this.state.username, this.state.password);
+        const errors = this.validate(username, password);
         this.setState({ 
             errors,
             loginError: false
         });
 
         if (Object.keys(errors).length === 0) {
-            this.props.login(this.state.username, this.state.password).then(() => {
+            this.props.login(username, password).then(() => {
                 this.props.history.push("/");
             }, () => {
                 this.setState({
@@ -52,7 +53,7 @@ class Login extends Component {
 
     render() {
 
-        const { errors } = this.state;
+        const { username, password, errors, loginError } = this.state;
         return (
             <div>
                 {this.props.isLoggedIn ?
@@ -67,7 +68,7 @@ class Login extends Component {
                                 <input
                                     id="username"
                                     name="username"
-                                    value={this.state.username}
+                                    value={username}
                                     onChange={this.handleChange}
                                     placeholder="username"
                                 />
@@ -77,14 +78,14 @@ class Login extends Component {
                                 <input
                                     id="password"
                                     name="password"
-                                    value={this.state.password}
+                                    value={password}
                                     onChange={this.handleChange}
                                     type="password"
                                     placeholder="password"
                                 />
                                 { errors && errors.password && <InLineErrorMessage text={errors.password} /> }
                             </div>
-                            {this.state.loginError && 
+                            {loginError && 
                                 <div className="login-error-case">
                                     <div>Incorrect Username or Password entered.</div>
                                 </div>
@@ -108,15 +109,13 @@ Login.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
-    // isLoggedIn: PropTypes.func.isRequired
+    isLoggedIn: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        ...ownProps,
-        isLoggedIn: isLoggedIn(state),
-    }
-};
+const mapStateToProps = (state, ownProps) => ({
+    ...ownProps,
+    isLoggedIn: isLoggedIn(state),
+});
 
 // const mapDispatchToProps = (dispatch) => ({
 //     login: (username, password) => dispatch(login(username, password))

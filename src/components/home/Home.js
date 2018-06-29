@@ -30,7 +30,7 @@ Home.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
-    // isLoggedIn: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {

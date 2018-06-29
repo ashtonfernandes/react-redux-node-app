@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import InLineErrorMessage from '../inLineErrorMessage/InLineErrorMessage';
 import './ForgotPassword.css';
 
 class ForgotPassword extends Component {
@@ -42,7 +43,7 @@ class ForgotPassword extends Component {
     }
 
     render() {
-        const { errors } = this.state;
+        const { password, errors, loginError } = this.state;
         return (
             <div className="login-form">
                 <form onSubmit={this.handleSubmit}>
@@ -50,7 +51,7 @@ class ForgotPassword extends Component {
                     <input
                             id="password"
                             name="password"
-                            value={this.state.password}
+                            value={password}
                             onChange={this.handleChange}
                             type="password"
                             placeholder="password"
@@ -61,14 +62,14 @@ class ForgotPassword extends Component {
                         <input
                             id="password"
                             name="password"
-                            value={this.state.password}
+                            value={password}
                             onChange={this.handleChange}
                             type="password"
                             placeholder="confirm password"
                         />
                         { errors && errors.password && <InLineErrorMessage text={errors.password} /> }
                     </div>
-                    {this.state.loginError && 
+                    {loginError && 
                         <div className="login-error-case">
                             <div>Passwords do not match.</div>
                         </div>
@@ -84,18 +85,16 @@ class ForgotPassword extends Component {
     }
 }
 
-ForgotPassword.propTypes = {
+// ForgotPassword.propTypes = {
     // login: PropTypes.func.isRequired,
     // history: PropTypes.shape({
     //     push: PropTypes.func.isRequired
     // }).isRequired,
     // isLoggedIn: PropTypes.func.isRequired
-};
+// };
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        ...ownProps
-    }
-};
+const mapStateToProps = (state, ownProps) => ({
+    ...ownProps
+});
 
 export default connect(mapStateToProps, { })(ForgotPassword);

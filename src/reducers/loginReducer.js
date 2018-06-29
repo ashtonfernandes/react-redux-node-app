@@ -5,11 +5,7 @@ const INITIAL_STATE = {
     loginError: false
 };
 
-export const isLoggedIn = (state) => {
-    if (state.loginReducer.profile && !state.loginReducer.loginError) {
-        return true;
-    }
-}
+export const isLoggedIn = (state) => state.loginReducer.profile && !state.loginReducer.loginError === true;
 
 // REDUCERS
 export default (state = INITIAL_STATE, action) => {

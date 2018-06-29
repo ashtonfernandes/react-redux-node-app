@@ -29,6 +29,7 @@ class Header extends Component {
     }
 
     render() {
+        const { logoutNow } = this.state;
         return (
             <div className="header-container">
                 <a href="/">
@@ -40,8 +41,8 @@ class Header extends Component {
                 </a>
                 <div className="header-right">
                     <div className="language-picker">
-                        <div role="button" onClick={() => this.props.setLocale('en')}>EN</div>
-                        <div role="button" onClick={() => this.props.setLocale('fr')}>FR</div>
+                        <div role="button" onKeyDown={() => this.props.setLocale('en')} onClick={() => this.props.setLocale('en')}>EN</div>
+                        <div role="button" onKeyDown={() => this.props.setLocale('fr')} onClick={() => this.props.setLocale('fr')}>FR</div>
                     </div>
 
                     {this.props.isLoggedIn ?
@@ -54,7 +55,7 @@ class Header extends Component {
                         </div>
                     }
                 </div>
-                {this.state.logoutNow && 
+                {logoutNow && 
                     <div className="logout-container">
                         <div className="logout-container-title"><FormattedMessage id="header.confirmation" defaultMessage="Are you sure you want to logout?"/></div>
                         <div>
@@ -69,15 +70,14 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    // isLoggedIn: PropTypes.func.isRequired,
-    // setLocale: PropTypes.func.isRequired
+    isLoggedIn: PropTypes.func.isRequired,
+    setLocale: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        ...ownProps,
-        isLoggedIn: isLoggedIn(state)
-    }
-};
+const mapStateToProps = (state, ownProps) => ({
+    ...ownProps,
+    isLoggedIn: isLoggedIn(state)
+});
 
 export default connect(mapStateToProps, { logout, setLocale })(Header);
