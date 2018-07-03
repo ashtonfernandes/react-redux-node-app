@@ -8,10 +8,9 @@ import PropTypes from 'prop-types';
 import Header from '../components/header/Header';
 import Login from '../components/login/Login';
 import Home from '../components/home/Home';
-// import translations from './translations';
 import ForgotPassword from '../components/forgotPassword/ForgotPassword';
 import PageNotFound from '../components/pageNotFound/PageNotFound';
-import translatedData from '../../build/locales/data.json';
+import translatedData from '../../build/locales/translatedData.json';
 
 addLocaleData([...en, ...fr]);
 

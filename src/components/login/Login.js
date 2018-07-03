@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { login } from '../../actions/loginActions'; 
-import { isLoggedIn, rememberMe } from '../../reducers/loginReducer';
+import { isLoggedIn } from '../../reducers/loginReducer';
 import InLineErrorMessage from '../inLineErrorMessage/InLineErrorMessage';
 import './Login.css';
 
@@ -21,7 +21,7 @@ class Login extends Component {
     }
 
     componentDidMount = () => {
-        if (localStorage.getItem('rememberMe') == 'true') {
+        if (localStorage.getItem('rememberMe') === 'true') {
             this.setState({
                 rememberMe: true
             });
@@ -41,8 +41,8 @@ class Login extends Component {
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
         if (this.state.rememberMe) {
-            if (e.target.name == 'username') {
-                var value = document.getElementById("username").value;
+            if (e.target.name === 'username') {
+                let value = document.getElementById("username").value;
                 if (value) {
                     localStorage.setItem('username', value);
                 }
@@ -56,7 +56,7 @@ class Login extends Component {
         }, () => {
             if (this.state.rememberMe) {
                 localStorage.setItem('rememberMe', true);
-                var value = document.getElementById("username").value;
+                let value = document.getElementById("username").value;
                 if (value) {
                     localStorage.setItem('username', value);
                 }
@@ -134,7 +134,7 @@ class Login extends Component {
                                 <input type="checkbox" checked={rememberMe} onChange={this.handleRememberMe} id="remember-me" name="check" />
                                 <label htmlFor="remember-me">
                                     <span>
-                                        Remember Me
+                                        <FormattedMessage id="login.remember_me" defaultMessage="Remember Me?"/>
                                     </span>
                                 </label>
                             </div>
@@ -176,4 +176,4 @@ const mapStateToProps = (state, ownProps) => ({
 //     login: (username, password) => dispatch(login(username, password))
 // });
 
-export default connect(mapStateToProps, { login, rememberMe })(Login);
+export default connect(mapStateToProps, { login })(Login);

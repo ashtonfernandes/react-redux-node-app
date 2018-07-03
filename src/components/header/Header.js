@@ -48,7 +48,8 @@ class Header extends Component {
     }
 
     render() {
-        const { logoutNow } = this.state;
+        const { logoutNow, activeLanguageEnglish, activeLanguageFrench } = this.state;
+        // const { isLoggedIn } = this.props;
         return (
             <div className="header-container">
                 <a href="/">
@@ -60,12 +61,12 @@ class Header extends Component {
                 </a>
                 <div className="header-right">
                     <div className="language-picker">
-                        <div className={ this.state.activeLanguageEnglish ? 'active-language': null } role="button" onKeyDown={() => this.changeLocale('en')} onClick={() => this.changeLocale('en')}>EN</div>
-                        <div className={ this.state.activeLanguageFrench ? 'active-language': null } role="button" role="button" onKeyDown={() => this.changeLocale('fr')} onClick={() => this.changeLocale('fr')}>FR</div>
+                        <div className={ activeLanguageEnglish ? 'active-language': null } role="button" tabIndex="0" onKeyPress={() => this.changeLocale('en')} onClick={() => this.changeLocale('en')}>EN</div>
+                        <div className={ activeLanguageFrench ? 'active-language': null } role="button" tabIndex="1" onKeyPress={() => this.changeLocale('fr')} onClick={() => this.changeLocale('fr')}>FR</div>
                     </div>
 
                     {this.props.isLoggedIn ?
-                        <div className="sign-out" role="button" onClick={this.logout} onKeyDown={this.logout}>
+                        <div className="sign-out" role="button" tabIndex="0" onKeyPress={this.logout} onClick={this.logout}>
                             <FormattedMessage id="header.sign_out" defaultMessage="Sign Out"/>
                         </div>
                         :
@@ -89,9 +90,9 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-    isLoggedIn: PropTypes.func.isRequired,
-    setLocale: PropTypes.func.isRequired,
-    logout: PropTypes.func.isRequired
+    // isLoggedIn: PropTypes.func.isRequired,
+    // setLocale: PropTypes.func.isRequired,
+    // logout: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
