@@ -84,6 +84,10 @@
     color: #fff;
 }
 
+.active-language {
+    color: #fff !important;
+}
+
 .sign-out {
     color: #a4a4a4;
     margin-left: 10px;

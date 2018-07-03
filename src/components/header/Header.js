@@ -13,7 +13,16 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            activeLanguage: false
         };
+    }
+
+    componentDidMount = () => {
+        if (localStorage.getItem('lang') && localStorage.getItem('lang') === 'en') {
+                this.setState({ activeLanguageEnglish: true, activeLanguageFrench: false})
+        } else {
+            this.setState({ activeLanguageFrench: true, activeLanguageEnglish: false })
+        }
     }
 
     logout = () => {
@@ -26,6 +35,17 @@ class Header extends Component {
         this.setState({
             logoutNow: false
         });
+    }
+
+    changeLocale = (language) => {
+        this.props.setLocale(language);
+        if (language && language === 'en') {
+            this.setState({ activeLanguageEnglish: true, activeLanguageFrench: false})
+        }
+
+        else {
+            this.setState({ activeLanguageFrench: true, activeLanguageEnglish: false })
+        }
     }
 
     render() {
@@ -41,8 +61,8 @@ class Header extends Component {
                 </a>
                 <div className="header-right">
                     <div className="language-picker">
-                        <div role="button" onKeyDown={() => this.props.setLocale('en')} onClick={() => this.props.setLocale('en')}>EN</div>
-                        <div role="button" onKeyDown={() => this.props.setLocale('fr')} onClick={() => this.props.setLocale('fr')}>FR</div>
+                        <div className={ this.state.activeLanguageEnglish ? 'active-language': null } role="button" onKeyDown={() => this.changeLocale('en')} onClick={() => this.changeLocale('en')}>EN</div>
+                        <div className={ this.state.activeLanguageFrench ? 'active-language': null } role="button" role="button" onKeyDown={() => this.changeLocale('fr')} onClick={() => this.changeLocale('fr')}>FR</div>
                     </div>
 
                     {this.props.isLoggedIn ?

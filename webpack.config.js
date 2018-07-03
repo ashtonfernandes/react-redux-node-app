@@ -46,14 +46,14 @@ module.exports = {
           cacheDirectory: true
         }
       },
-      // {
-      //   test: /\.(js|jsx)$/,
-      //   loader: "eslint-loader",
-      //   exclude: /node_modules/,
-      //   query: {
-      //     cacheDirectory: true
-      //   }
-      // },
+      {
+        test: /\.(js|jsx)$/,
+        loader: "eslint-loader",
+        exclude: /node_modules/,
+        query: {
+          cacheDirectory: true
+        }
+      },
       {
         test: /\.s?css$/,
         loader: IS_PROD
