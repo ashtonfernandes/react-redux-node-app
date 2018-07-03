@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { login } from '../../actions/loginActions'; 
-import { isLoggedIn } from '../../reducers/loginReducer';
+import { isLoggedIn, rememberMe } from '../../reducers/loginReducer';
 import InLineErrorMessage from '../inLineErrorMessage/InLineErrorMessage';
 import './Login.css';
 
@@ -20,18 +20,55 @@ class Login extends Component {
         };
     }
 
+    componentDidMount = () => {
+        if (localStorage.getItem('rememberMe') == 'true') {
+            this.setState({
+                rememberMe: true
+            });
+        }
+
+        else {
+            this.setState({
+                rememberMe: false
+            });
+        }
+
+        if (localStorage.getItem('username')) {
+            this.setState({ username: localStorage.getItem('username') })
+        }
+    }
+
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+        if (this.state.rememberMe) {
+            if (e.target.name == 'username') {
+                var value = document.getElementById("username").value;
+                if (value) {
+                    localStorage.setItem('username', value);
+                }
+            }
+        }
     };
 
-    handleCheckbox = (e) => {
+    handleRememberMe = () => {
         this.setState({
             rememberMe: !this.state.rememberMe
+        }, () => {
+            if (this.state.rememberMe) {
+                localStorage.setItem('rememberMe', true);
+                var value = document.getElementById("username").value;
+                if (value) {
+                    localStorage.setItem('username', value);
+                }
+            }
+            else {
+                localStorage.setItem('rememberMe', false);
+            }
         });
     };
 
     handleSubmit = (e) => {
-        const { username, password } = this.state;
+        const { username, password, rememberMe } = this.state;
         e.preventDefault();
         const errors = this.validate(username, password);
         this.setState({ 
@@ -40,7 +77,7 @@ class Login extends Component {
         });
 
         if (Object.keys(errors).length === 0) {
-            this.props.login(username, password).then(() => {
+            this.props.login(username, password, rememberMe).then(() => {
                 this.props.history.push("/");
             }, () => {
                 this.setState({
@@ -94,7 +131,7 @@ class Login extends Component {
                             </div>
 
                             <div className="remember-me">
-                                <input type="checkbox" checked={rememberMe} onChange={this.handleCheckbox} id="remember-me" name="check" />
+                                <input type="checkbox" checked={rememberMe} onChange={this.handleRememberMe} id="remember-me" name="check" />
                                 <label htmlFor="remember-me">
                                     <span>
                                         Remember Me
@@ -122,11 +159,12 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-    login: PropTypes.func.isRequired,
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
-    isLoggedIn: PropTypes.func.isRequired
+    // login: PropTypes.func.isRequired,
+    // history: PropTypes.shape({
+    //     push: PropTypes.func.isRequired
+    // }).isRequired,
+    // isLoggedIn: PropTypes.func.isRequired,
+    // rememberMe: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -138,4 +176,4 @@ const mapStateToProps = (state, ownProps) => ({
 //     login: (username, password) => dispatch(login(username, password))
 // });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, rememberMe })(Login);

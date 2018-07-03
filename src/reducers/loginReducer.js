@@ -11,7 +11,7 @@ export const isLoggedIn = (state) => state.loginReducer.profile && !state.loginR
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
-        localStorage.setItem('profile', action.profile);
+            localStorage.setItem('profile', action.profile);
             return {
                 ...state,
                 profile: action.profile,
