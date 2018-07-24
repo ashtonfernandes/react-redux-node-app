@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../actions/types';
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../../actionTypes/types';
 
 const INITIAL_STATE = {
     profile: localStorage.getItem('profile'),

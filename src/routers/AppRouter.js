@@ -27,7 +27,7 @@ const AppRouter = (props) => {
     const messages = translatedData[languageWithoutRegionCode] || translatedData[language] || translatedData.en;
 
     return (
-        <IntlProvider locale={lang} messages={messages}>
+        <IntlProvider locale={lang} messages={messages} key={lang}>
             <div>
                 <main>
                     <Header />

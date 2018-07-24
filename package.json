@@ -8,8 +8,6 @@
     "dev": "concurrently \"node ./srv/server.js\" \"webpack -w\"",
     "build": "webpack",
     "lint": "eslint src",
-    "translate": "NODE_ENV=production babel ./src >/dev/null",
-    "extract": "NODE_ENV=production babel ./src --out-file /dev/null",
     "build:lang": "./node_modules/.bin/babel-node src/utils/translator.js"
   },
   "author": "Ashton",

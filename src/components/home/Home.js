@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { isLoggedIn } from '../../reducers/loginReducer';
+import { isLoggedIn } from '../login/loginReducer';
 import './Home.css';
 
 class Home extends Component {

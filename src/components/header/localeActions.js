@@ -1,4 +1,4 @@
-import { LOCALE_SET } from './types';
+import { LOCALE_SET } from '../../actionTypes/types';
 
 // ACTION GENERATORS
 export const localeSet = (lang) => ({

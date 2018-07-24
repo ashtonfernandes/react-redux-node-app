@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { login } from '../../actions/loginActions'; 
-import { isLoggedIn } from '../../reducers/loginReducer';
+import { login } from './loginActions'; 
+import { isLoggedIn } from './loginReducer';
 import InLineErrorMessage from '../inLineErrorMessage/InLineErrorMessage';
 import './Login.css';
 

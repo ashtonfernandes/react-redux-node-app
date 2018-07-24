@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { logout } from '../../actions/loginActions';
-import { setLocale } from '../../actions/localeActions';
-import { isLoggedIn } from '../../reducers/loginReducer';
+import { logout } from '../login/loginActions';
+import { setLocale } from './localeActions';
+import { isLoggedIn } from '../login/loginReducer';
 import './Header.css';
 
 const companyLogo = require('../../assets/icons/logo.png');

@@ -1,5 +1,5 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from './types';
-import { loginUser } from '../services/services';
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGOUT_SUCCESS } from '../../actionTypes/types';
+import { loginUser } from '../../services/services';
 
 // ACTION GENERATORS
 export const setLoginSuccess = (profile) => ({

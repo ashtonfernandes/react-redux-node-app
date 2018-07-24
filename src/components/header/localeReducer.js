@@ -1,4 +1,4 @@
-import { LOCALE_SET } from '../actions/types';
+import { LOCALE_SET } from '../../actionTypes/types';
 
 const INITIAL_STATE = {
     lang: localStorage.getItem('lang')
